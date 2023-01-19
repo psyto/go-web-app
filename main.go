@@ -23,15 +23,15 @@ func (a *Account) IncreaseBalance() {
 }
 
 func main() {
-	var accList []Account
+	var accList []*Account
 
-	accList = append(accList, Account{
+	accList = append(accList, &Account{
 		FirstName: "Hiroyuki",
 		LastName:  "Saito",
 		Balance:   0,
 	})
 
-	accList = append(accList, Account{
+	accList = append(accList, &Account{
 		FirstName: "Amane",
 		LastName:  "Saito",
 		Balance:   100,
