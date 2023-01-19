@@ -1,0 +1,7 @@
+mode: set
+github.com/psyto/go-web-app/main.go:8.13,11.16 2 0
+github.com/psyto/go-web-app/main.go:16.2,16.46 1 0
+github.com/psyto/go-web-app/main.go:11.16,14.3 2 0
+github.com/psyto/go-web-app/main.go:19.44,21.12 2 1
+github.com/psyto/go-web-app/main.go:24.2,25.20 2 1
+github.com/psyto/go-web-app/main.go:21.12,23.3 1 1
