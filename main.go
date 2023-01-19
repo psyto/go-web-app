@@ -1,48 +1,24 @@
 package main
 
-import "log"
+import (
+	"log"
 
-type Account struct {
-	FirstName string
-	LastName  string
-	Balance   int
-}
+	"github.com/psyto/go-web-app/helpers"
+)
 
-type Balance interface {
-	GetBalance() int
-	IncreaseBalance()
-}
+const numPool = 1000
 
-func (a *Account) GetBalance() int {
-	return a.Balance
-}
-
-func (a *Account) IncreaseBalance() {
-	a.Balance = a.Balance + 50
-	log.Println(a.Balance)
+func CalculateValue(intChan chan int) {
+	randomNumber := helpers.RandomNumber(numPool)
+	intChan <- randomNumber
 }
 
 func main() {
-	var accList []*Account
+	intChan := make(chan int)
+	defer close(intChan)
 
-	accList = append(accList, &Account{
-		FirstName: "Hiroyuki",
-		LastName:  "Saito",
-		Balance:   0,
-	})
+	go CalculateValue(intChan)
 
-	accList = append(accList, &Account{
-		FirstName: "Amane",
-		LastName:  "Saito",
-		Balance:   100,
-	})
-
-	for _, acc := range accList {
-		acc.IncreaseBalance()
-	}
-
-	for i, acc := range accList {
-		log.Println(i, acc.FirstName, acc.GetBalance())
-	}
-
+	num := <-intChan
+	log.Println(num)
 }
